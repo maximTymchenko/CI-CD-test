@@ -39,7 +39,7 @@ jobs:
       #   with:
       #     node-version: 14
       - run: |
-          npm install
+          npm i
           npm ci
           npm test
           npm run build
