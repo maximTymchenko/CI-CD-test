@@ -39,7 +39,9 @@ jobs:
         with:
           node-version: 14
       - run: |
-          npm run build
+          npm install
+          npm ci
+          npm build
           npm test
           npm deploy
         env:
