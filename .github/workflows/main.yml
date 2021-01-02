@@ -33,12 +33,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build and Test
     steps:
       - uses: actions/checkout@v2
-        name: Check out repository
       - uses: actions/setup-node@v1
-        name: Set up Node.js
         with:
           node-version: 14
       - run: |
@@ -46,7 +43,9 @@ jobs:
           npm ci
           npm run build
           npm test
-        name: Build and Test
+      - uses: maximTymchenko/CI-CD-test@master
+        with:
+          args: --acl public-read --follow-symlinks --delete --exclude '.git*/*'
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
