@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Test
       run: yarn test
-    - name: Build
+      - name: Build
       run: yarn build
       - uses: actions/checkout@master
       - uses: jakejarvis/s3-sync-action@master
