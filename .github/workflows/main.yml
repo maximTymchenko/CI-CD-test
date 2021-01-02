@@ -39,7 +39,7 @@ jobs:
         with:
           node-version: 14
       - run: |
-          npm ci
+          # npm ci
           npm run build
           npm test
           npm deploy
