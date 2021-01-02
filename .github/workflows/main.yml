@@ -41,8 +41,9 @@ jobs:
       - run: |
           npm install
           npm ci
-          npm run build
           npm test
+          npm run build
+          npm deploy
       - uses: jakejarvis/s3-sync-action@master
         with:
           args: --acl public-read --follow-symlinks --delete --exclude '.git*/*'
