@@ -8,18 +8,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
-- uses: actions/checkout@v2
-- name: Configure AWS Credentials
-  uses: aws-actions/configure-aws-credentials@v1
-  with:
-    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-    aws-secret-access-key: ${{ secrets.AWS_ACCESS_SECRET }}
-    aws-region: ${{ secrets.AWS_REGION }}
-- name: Build React App
-  run: npm install && npm run build
-- name: Deploy app build to S3 bucket
-run: aws s3 sync ./build/ s3://ci-test1 --delete
+      - uses: actions/checkout@v2
+      - name: Configure AWS Credentials
+      - uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_ACCESS_SECRET }}
+        aws-region: ${{ secrets.AWS_REGION }}
+      - name: Build React App
+        run: npm install && npm run build
+      - name: Deploy app build to S3 bucket
+      run: aws s3 sync ./build/ s3://ci-test1 --delete
 
 # name: Production Build
 # on:
