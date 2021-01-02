@@ -39,12 +39,12 @@ on:
       - master
 
 jobs:
-  test_pull_request:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      # - run: npm ci
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v14
+      - run: npm ci
       - run: npm test
       - run: npm run build
         env:
